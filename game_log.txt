@@ -1,0 +1,327 @@
+[2026-02-17 06:54:55] Game started
+[2026-02-17 06:55:10] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:55:12] Pikachu used Thunder Shock
+[2026-02-17 06:55:12] Rookidee fainted
+[2026-02-17 06:55:12] Ash Ketchum won the battle
+[2026-02-17 06:55:12] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:55:13] Pikachu used Thunder Shock
+[2026-02-17 06:55:13] Corvisquire fainted
+[2026-02-17 06:55:13] Ash Ketchum won the battle
+[2026-02-17 06:55:13] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:55:14] Pikachu used Thunder Shock
+[2026-02-17 06:55:14] Corviknight used Steel Wing
+[2026-02-17 06:55:14] Pikachu fainted
+[2026-02-17 06:55:14] World Trainer won the battle
+[2026-02-17 06:55:15] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 06:55:15] Steven Stone won the battle
+[2026-02-17 06:55:15] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 06:55:15] Cynthia won the battle
+[2026-02-17 06:55:15] Battle started: Ash Ketchum vs Leon
+[2026-02-17 06:55:15] Leon won the battle
+[2026-02-17 06:55:15] Game exited
+[2026-02-17 06:58:56] Game started
+[2026-02-17 06:59:02] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 06:59:06] Pikachu used Thunder Shock
+[2026-02-17 06:59:06] Metagross used Meteor Mash
+[2026-02-17 06:59:06] Pikachu fainted
+[2026-02-17 06:59:06] Steven Stone won the battle
+[2026-02-17 06:59:06] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 06:59:06] Cynthia won the battle
+[2026-02-17 06:59:06] Battle started: Ash Ketchum vs Leon
+[2026-02-17 06:59:06] Leon won the battle
+[2026-02-17 06:59:06] Game exited
+[2026-02-17 06:59:11] Game started
+[2026-02-17 06:59:15] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:59:16] Pikachu used Thunder Shock
+[2026-02-17 06:59:16] Rookidee fainted
+[2026-02-17 06:59:16] Ash Ketchum won the battle
+[2026-02-17 06:59:16] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:59:19] Pikachu used Thunder Shock
+[2026-02-17 06:59:19] Corvisquire fainted
+[2026-02-17 06:59:19] Ash Ketchum won the battle
+[2026-02-17 06:59:19] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 06:59:21] Pikachu used Thunder Shock
+[2026-02-17 06:59:21] Corviknight used Steel Wing
+[2026-02-17 06:59:21] Pikachu fainted
+[2026-02-17 06:59:21] World Trainer won the battle
+[2026-02-17 06:59:22] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 06:59:22] Steven Stone won the battle
+[2026-02-17 06:59:22] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 06:59:22] Cynthia won the battle
+[2026-02-17 06:59:22] Battle started: Ash Ketchum vs Leon
+[2026-02-17 06:59:22] Leon won the battle
+[2026-02-17 06:59:22] Game exited
+[2026-02-17 07:02:47] Game started
+[2026-02-17 07:02:52] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:02:55] Pikachu used Thunder Shock
+[2026-02-17 07:02:55] Rookidee fainted
+[2026-02-17 07:02:55] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:02:56] Pikachu used Thunder Shock
+[2026-02-17 07:02:56] Corvisquire fainted
+[2026-02-17 07:02:56] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:02:57] Pikachu used Thunder Shock
+[2026-02-17 07:02:57] Corviknight used Steel Wing
+[2026-02-17 07:02:57] Pikachu fainted
+[2026-02-17 07:02:58] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:02:59] Pikachu used Thunder Shock
+[2026-02-17 07:02:59] Metagross used Meteor Mash
+[2026-02-17 07:02:59] Pikachu fainted
+[2026-02-17 07:02:59] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:02:59] Garchomp used Dragon Claw
+[2026-02-17 07:02:59] Pikachu fainted
+[2026-02-17 07:02:59] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:02:59] Charizard used G-Max Wildfire
+[2026-02-17 07:02:59] Pikachu fainted
+[2026-02-17 07:03:11] Game started
+[2026-02-17 07:03:13] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:03:14] Pikachu used Thunder Shock
+[2026-02-17 07:03:14] Rookidee fainted
+[2026-02-17 07:03:14] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:03:15] Pikachu used Thunder Shock
+[2026-02-17 07:03:15] Corvisquire fainted
+[2026-02-17 07:03:15] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:03:17] Pikachu used Thunder Shock
+[2026-02-17 07:03:17] Corviknight used Steel Wing
+[2026-02-17 07:03:17] Pikachu fainted
+[2026-02-17 07:03:18] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:03:19] Pikachu used Thunder Shock
+[2026-02-17 07:03:19] Metagross used Meteor Mash
+[2026-02-17 07:03:19] Pikachu fainted
+[2026-02-17 07:03:19] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:03:19] Garchomp used Dragon Claw
+[2026-02-17 07:03:19] Pikachu fainted
+[2026-02-17 07:03:19] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:03:19] Charizard used G-Max Wildfire
+[2026-02-17 07:03:19] Pikachu fainted
+[2026-02-17 07:03:28] Game exited
+[2026-02-17 07:05:10] Game started
+[2026-02-17 07:07:11] Game started
+[2026-02-17 07:07:15] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:16] Pikachu used Quick Attack
+[2026-02-17 07:07:16] Rookidee fainted
+[2026-02-17 07:07:16] Ash Ketchum won the battle
+[2026-02-17 07:07:16] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:17] Pikachu used Thunder Shock
+[2026-02-17 07:07:17] Corvisquire fainted
+[2026-02-17 07:07:17] Ash Ketchum won the battle
+[2026-02-17 07:07:17] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:18] Pikachu used Thunder Shock
+[2026-02-17 07:07:18] Corviknight used Steel Wing
+[2026-02-17 07:07:18] Pikachu fainted
+[2026-02-17 07:07:18] World Trainer won the battle
+[2026-02-17 07:07:19] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:07:24] Pikachu used Thunder Shock
+[2026-02-17 07:07:24] Metagross used Meteor Mash
+[2026-02-17 07:07:24] Pikachu fainted
+[2026-02-17 07:07:24] Steven Stone won the battle
+[2026-02-17 07:07:24] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:07:24] Garchomp used Dragon Claw
+[2026-02-17 07:07:24] Pikachu fainted
+[2026-02-17 07:07:24] Cynthia won the battle
+[2026-02-17 07:07:24] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:07:24] Charizard used G-Max Wildfire
+[2026-02-17 07:07:24] Pikachu fainted
+[2026-02-17 07:07:24] Leon won the battle
+[2026-02-17 07:07:28] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:29] Pikachu used Thunder Shock
+[2026-02-17 07:07:29] Rookidee fainted
+[2026-02-17 07:07:29] Ash Ketchum won the battle
+[2026-02-17 07:07:29] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:30] Pikachu used Thunder Shock
+[2026-02-17 07:07:30] Corvisquire fainted
+[2026-02-17 07:07:30] Ash Ketchum won the battle
+[2026-02-17 07:07:30] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:07:31] Pikachu used Thunder Shock
+[2026-02-17 07:07:31] Corviknight used Steel Wing
+[2026-02-17 07:07:31] Pikachu fainted
+[2026-02-17 07:07:31] World Trainer won the battle
+[2026-02-17 07:07:32] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:07:34] Pikachu used Thunder Shock
+[2026-02-17 07:07:34] Metagross used Meteor Mash
+[2026-02-17 07:07:34] Pikachu fainted
+[2026-02-17 07:07:34] Steven Stone won the battle
+[2026-02-17 07:07:34] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:07:34] Garchomp used Dragon Claw
+[2026-02-17 07:07:34] Pikachu fainted
+[2026-02-17 07:07:34] Cynthia won the battle
+[2026-02-17 07:07:34] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:07:34] Charizard used G-Max Wildfire
+[2026-02-17 07:07:34] Pikachu fainted
+[2026-02-17 07:07:34] Leon won the battle
+[2026-02-17 07:07:36] Game exited
+[2026-02-17 07:17:38] Game started
+[2026-02-17 07:17:44] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:17:46] Pikachu used Thunder Shock
+[2026-02-17 07:17:46] Rookidee fainted
+[2026-02-17 07:17:46] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:17:47] Pikachu used Quick Attack
+[2026-02-17 07:17:47] Corvisquire used Drill Peck
+[2026-02-17 07:17:47] Pikachu fainted
+[2026-02-17 07:17:47] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:17:49] Pikachu used Quick Attack
+[2026-02-17 07:17:49] Corviknight used Steel Wing
+[2026-02-17 07:17:49] Pikachu fainted
+[2026-02-17 07:17:50] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:17:53] Pikachu used Thunder Shock
+[2026-02-17 07:17:53] Metagross used Meteor Mash
+[2026-02-17 07:17:53] Pikachu fainted
+[2026-02-17 07:17:53] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:17:53] Garchomp used Dragon Claw
+[2026-02-17 07:17:53] Pikachu fainted
+[2026-02-17 07:17:53] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:17:53] Charizard used G-Max Wildfire
+[2026-02-17 07:17:53] Pikachu fainted
+[2026-02-17 07:17:59] Battle started: Goh vs World Trainer
+[2026-02-17 07:18:00] Cinderace used Ember
+[2026-02-17 07:18:00] Rookidee fainted
+[2026-02-17 07:18:01] Battle started: Goh vs World Trainer
+[2026-02-17 07:18:02] Cinderace used Ember
+[2026-02-17 07:18:02] Corvisquire fainted
+[2026-02-17 07:18:02] Battle started: Goh vs World Trainer
+[2026-02-17 07:18:03] Cinderace used Ember
+[2026-02-17 07:18:03] Corviknight used Steel Wing
+[2026-02-17 07:18:04] Cinderace used Ember
+[2026-02-17 07:18:04] Corviknight fainted
+[2026-02-17 07:18:05] Battle started: Goh vs Steven Stone
+[2026-02-17 07:18:07] Cinderace used Ember
+[2026-02-17 07:18:07] Metagross used Meteor Mash
+[2026-02-17 07:18:07] Cinderace fainted
+[2026-02-17 07:18:07] Battle started: Goh vs Cynthia
+[2026-02-17 07:18:08] Cinderace used Quick Attack
+[2026-02-17 07:18:08] Garchomp used Dragon Claw
+[2026-02-17 07:18:08] Cinderace fainted
+[2026-02-17 07:18:08] Battle started: Goh vs Leon
+[2026-02-17 07:18:08] Charizard used G-Max Wildfire
+[2026-02-17 07:18:08] Cinderace fainted
+[2026-02-17 07:18:10] Game exited
+[2026-02-17 07:20:16] Game started
+[2026-02-17 07:20:24] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:20:26] Pikachu used Thunder Shock
+[2026-02-17 07:20:26] Rookidee fainted
+[2026-02-17 07:20:26] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:20:27] Pikachu used Quick Attack
+[2026-02-17 07:20:27] Corvisquire selected Drill Peck strategically
+[2026-02-17 07:20:27] Pikachu fainted
+[2026-02-17 07:20:27] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:20:28] Pikachu used Quick Attack
+[2026-02-17 07:20:28] Corviknight selected Steel Wing strategically
+[2026-02-17 07:20:28] Pikachu fainted
+[2026-02-17 07:20:29] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:20:31] Pikachu used Thunder Shock
+[2026-02-17 07:20:31] Metagross selected Meteor Mash strategically
+[2026-02-17 07:20:31] Pikachu fainted
+[2026-02-17 07:20:31] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:20:31] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:20:31] Pikachu fainted
+[2026-02-17 07:20:31] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:20:31] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:20:31] Pikachu fainted
+[2026-02-17 07:25:52] Game started
+[2026-02-17 07:25:56] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:25:57] Pikachu used Thunder Shock
+[2026-02-17 07:25:59] Rookidee fainted
+[2026-02-17 07:26:00] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:26:01] Pikachu used Thunder Shock
+[2026-02-17 07:26:03] Corvisquire fainted
+[2026-02-17 07:26:04] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:26:09] Pikachu used Quick Attack
+[2026-02-17 07:26:10] Corviknight selected Steel Wing strategically
+[2026-02-17 07:26:12] Pikachu fainted
+[2026-02-17 07:26:13] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:26:22] Pikachu used Thunder Shock
+[2026-02-17 07:26:23] Metagross selected Meteor Mash strategically
+[2026-02-17 07:26:24] Pikachu fainted
+[2026-02-17 07:26:25] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:26:25] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:26:26] Pikachu fainted
+[2026-02-17 07:26:27] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:26:27] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:26:28] Pikachu fainted
+[2026-02-17 07:34:20] Game started
+[2026-02-17 07:34:24] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:34:26] Pikachu used Thunder Shock
+[2026-02-17 07:34:28] Rookidee fainted
+[2026-02-17 07:34:29] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:34:32] Pikachu used Thunder Shock
+[2026-02-17 07:34:33] Corvisquire fainted
+[2026-02-17 07:34:34] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:34:40] Pikachu used Thunder Shock
+[2026-02-17 07:34:41] Corviknight selected Steel Wing strategically
+[2026-02-17 07:34:42] Pikachu fainted
+[2026-02-17 07:34:44] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:34:53] Pikachu used Thunder Shock
+[2026-02-17 07:34:54] Metagross selected Meteor Mash strategically
+[2026-02-17 07:34:56] Pikachu fainted
+[2026-02-17 07:34:56] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:34:56] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:34:58] Pikachu fainted
+[2026-02-17 07:34:59] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:34:59] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:35:00] Pikachu fainted
+[2026-02-17 07:35:02] Game exited
+[2026-02-17 07:43:16] Game started
+[2026-02-17 07:43:21] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:43:22] Pikachu used Thunder Shock
+[2026-02-17 07:43:23] Rookidee fainted
+[2026-02-17 07:43:24] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:43:29] Pikachu used Thunder Shock
+[2026-02-17 07:43:30] Corvisquire fainted
+[2026-02-17 07:43:31] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:43:35] Pikachu used Thunder Shock
+[2026-02-17 07:43:36] Corviknight selected Steel Wing strategically
+[2026-02-17 07:43:37] Pikachu fainted
+[2026-02-17 07:43:39] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:43:44] Pikachu used Thunder Shock
+[2026-02-17 07:43:45] Metagross selected Meteor Mash strategically
+[2026-02-17 07:43:46] Pikachu fainted
+[2026-02-17 07:43:47] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:43:47] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:43:48] Pikachu fainted
+[2026-02-17 07:43:49] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:43:49] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:43:50] Pikachu fainted
+[2026-02-17 07:43:53] Game exited
+[2026-02-17 07:46:41] Game started
+[2026-02-17 07:46:45] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:46:46] Pikachu used Thunder Shock
+[2026-02-17 07:46:48] Rookidee fainted
+[2026-02-17 07:46:49] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:46:50] Pikachu used Thunder Shock
+[2026-02-17 07:46:52] Corvisquire fainted
+[2026-02-17 07:46:53] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:46:56] Pikachu used Thunder Shock
+[2026-02-17 07:46:58] Corviknight selected Steel Wing strategically
+[2026-02-17 07:46:59] Pikachu fainted
+[2026-02-17 07:47:01] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:47:19] Pikachu used Thunder Shock
+[2026-02-17 07:47:21] Metagross selected Meteor Mash strategically
+[2026-02-17 07:47:22] Pikachu fainted
+[2026-02-17 07:47:23] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:47:23] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:47:24] Pikachu fainted
+[2026-02-17 07:47:24] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:47:24] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:47:26] Pikachu fainted
+[2026-02-17 07:47:33] Game exited
+[2026-02-17 07:50:14] Game started - Version 1.0.0
+[2026-02-17 07:50:22] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:50:23] Pikachu used Thunder Shock
+[2026-02-17 07:50:25] Rookidee fainted
+[2026-02-17 07:50:26] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:50:29] Pikachu used Thunder Shock
+[2026-02-17 07:50:30] Corvisquire fainted
+[2026-02-17 07:50:31] Battle started: Ash Ketchum vs World Trainer
+[2026-02-17 07:50:33] Pikachu used Thunder Shock
+[2026-02-17 07:50:35] Corviknight selected Steel Wing strategically
+[2026-02-17 07:50:36] Pikachu fainted
+[2026-02-17 07:50:37] Battle started: Ash Ketchum vs Steven Stone
+[2026-02-17 07:50:42] Pikachu used Thunder Shock
+[2026-02-17 07:50:43] Metagross selected Meteor Mash strategically
+[2026-02-17 07:50:44] Pikachu fainted
+[2026-02-17 07:50:45] Battle started: Ash Ketchum vs Cynthia
+[2026-02-17 07:50:45] Garchomp selected Dragon Claw strategically
+[2026-02-17 07:50:46] Pikachu fainted
+[2026-02-17 07:50:47] Battle started: Ash Ketchum vs Leon
+[2026-02-17 07:50:47] Charizard selected G-Max Wildfire strategically
+[2026-02-17 07:50:48] Pikachu fainted
+[2026-02-17 07:50:59] Game exited

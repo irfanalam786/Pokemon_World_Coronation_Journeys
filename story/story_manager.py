@@ -1,14 +1,10 @@
-import json
-from typing import Dict, List
-
 class StoryManager:
     def __init__(self):
-        self.story: Dict[str, List[str]] = {}
+        self.stages = ["Normal Class", "Great Class", "Ultra Class", "Master Class"]
 
-        with open("story/wcs_story.json", "r") as file:
-            self.story = json.load(file)
-
-    def show_story_path(self):
-        print("\nWorld Coronation Series Path:")
-        for rank, events in self.story.items():
-            print(f"- {rank}: {events}")
+    def get_next_stage(self, current):
+        if current in self.stages:
+            idx = self.stages.index(current)
+            if idx + 1 < len(self.stages):
+                return self.stages[idx + 1]
+        return None

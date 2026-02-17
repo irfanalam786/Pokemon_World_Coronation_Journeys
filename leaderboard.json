@@ -1,0 +1,18 @@
+[
+    {
+        "trainer": "Player",
+        "wins": 12
+    },
+    {
+        "trainer": "Player",
+        "wins": 10
+    },
+    {
+        "trainer": "Player",
+        "wins": 5
+    },
+    {
+        "trainer": "Player",
+        "wins": 3
+    }
+]

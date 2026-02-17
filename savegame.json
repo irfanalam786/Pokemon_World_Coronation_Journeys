@@ -1,0 +1,10 @@
+{
+    "trainer_name": "Ash Ketchum",
+    "rank": "Master Class",
+    "pokemon_team": [
+        {
+            "name": "Pikachu",
+            "current_hp": 35
+        }
+    ]
+}

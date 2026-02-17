@@ -3,13 +3,6 @@ from battle.move import Move
 
 class Pikachu(Pokemon):
     def __init__(self):
-        super().__init__(
-            name="Pikachu",
-            hp=35,
-            attack=55,
-            defense=40,
-            speed=90,
-            p_type="Electric"
-        )
-
+        super().__init__("Pikachu", 35, 55, 40, 90, "Electric")
         self.add_move(Move("Thunder Shock", 40, "Electric"))
+        self.add_move(Move("Quick Attack", 30, "Normal"))
