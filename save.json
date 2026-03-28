@@ -1,0 +1,22 @@
+{
+    "trainer": {
+        "name": "Ash",
+        "rank": "Normal",
+        "points": -10,
+        "team": [
+            {
+                "name": "Pikachu",
+                "type": "Electric",
+                "role": "speed",
+                "level": 10,
+                "exp": 0,
+                "hp": 216,
+                "status": null
+            }
+        ]
+    },
+    "choices": {
+        "starter": null,
+        "path": null
+    }
+}
