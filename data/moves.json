@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Thunderbolt",
+    "power": 90,
+    "type": "Electric"
+  },
+  {
+    "name": "Ember",
+    "power": 40,
+    "type": "Fire"
+  }
+]

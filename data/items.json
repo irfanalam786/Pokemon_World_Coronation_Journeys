@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Potion",
+    "type": "heal",
+    "value": 20
+  },
+  {
+    "name": "Rare Candy",
+    "type": "level_up",
+    "value": 1,
+    "restricted": true
+  }
+]
