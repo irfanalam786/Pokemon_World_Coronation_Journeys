@@ -6,17 +6,13 @@ class Game:
     def __init__(self):
         self.loader = JSONLoader()
 
-        # Load raw data from JSON
+        # Load raw data
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
 
-        # Convert JSON → Objects
+        # Convert to objects
         self.pokemon_objects = self.create_pokemon_objects()
         self.trainers = self.create_trainers()
-
-    # ----------------------------
-    # OBJECT CREATION
-    # ----------------------------
 
     def create_pokemon_objects(self):
         return [Pokemon(p) for p in self.pokemon_data]
@@ -24,32 +20,24 @@ class Game:
     def create_trainers(self):
         return [Trainer(t, self.pokemon_data) for t in self.trainers_data]
 
-    # ----------------------------
-    # GAME START (DAY 3 TEST)
-    # ----------------------------
-
     def start(self):
         print("🎮 Pokémon Anime RPG Started\n")
 
-        # Select first Pokémon for testing
         pokemon = self.pokemon_objects[0]
 
         print("=== BEFORE EXP ===")
         print(pokemon)
 
-        # Simulate battle result
-        base_exp = 10
-        opponent_level = 5
+        print("\n--- Multiple Battles Simulation ---")
 
-        exp_gain = base_exp * opponent_level
-
-        print("\n--- Battle Finished ---")
-        pokemon.gain_exp(exp_gain)
+        # Simulate multiple EXP gains
+        for i in range(10):
+            print(f"\nBattle {i+1}")
+            pokemon.gain_exp(100)
 
         print("\n=== AFTER EXP ===")
         print(pokemon)
 
-        # Show trainers (for verification)
         print("\n=== TRAINERS ===")
         for t in self.trainers:
             print(t)
