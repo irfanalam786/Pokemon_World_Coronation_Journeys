@@ -23,12 +23,20 @@ class Game:
     def start(self):
         print("🎮 Game Started\n")
 
-        print("=== Pokémon List ===")
-        for p in self.pokemon_objects:
-            print(p)
+        # Take first Pokémon
+        pokemon = self.pokemon_objects[0]
 
-        print("\n=== Trainers ===")
-        for t in self.trainers:
-            print(t)
-            for p in t.team:
-                print(f"  -> {p}")
+        print("Before EXP:")
+        print(pokemon)
+
+        # Simulate battle EXP
+        base_exp = 10
+        opponent_level = 5
+
+        exp_gain = base_exp * opponent_level
+
+        print("\n--- Battle Finished ---")
+        pokemon.gain_exp(exp_gain)
+
+        print("\nAfter EXP:")
+        print(pokemon)
