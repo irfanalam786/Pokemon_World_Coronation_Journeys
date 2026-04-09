@@ -1,21 +1,34 @@
 from engine.json_loader import JSONLoader
+from models.pokemon import Pokemon
+from models.trainer import Trainer
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
 
-        # Load all data
+        # Load raw data
         self.pokemon_data = self.loader.load("pokemon.json")
-        self.moves_data = self.loader.load("moves.json")
-        self.items_data = self.loader.load("items.json")
         self.trainers_data = self.loader.load("trainers.json")
 
-    def start(self):
-        print("🎮 Pokémon Anime RPG Started")
-        print("\nLoaded Pokémon:")
-        for p in self.pokemon_data:
-            print(f"- {p['name']} (Level {p['level']})")
+        # Convert to objects
+        self.pokemon_objects = self.create_pokemon_objects()
+        self.trainers = self.create_trainers()
 
-        print("\nLoaded Trainers:")
-        for t in self.trainers_data:
-            print(f"- {t['name']} ({t['personality']})")
+    def create_pokemon_objects(self):
+        return [Pokemon(p) for p in self.pokemon_data]
+
+    def create_trainers(self):
+        return [Trainer(t, self.pokemon_data) for t in self.trainers_data]
+
+    def start(self):
+        print("🎮 Game Started\n")
+
+        print("=== Pokémon List ===")
+        for p in self.pokemon_objects:
+            print(p)
+
+        print("\n=== Trainers ===")
+        for t in self.trainers:
+            print(t)
+            for p in t.team:
+                print(f"  -> {p}")
