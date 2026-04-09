@@ -1,0 +1,6 @@
+{
+  "name": "Player",
+  "team": ["Pikachu"],
+  "money": 1000,
+  "progress": {}
+}
