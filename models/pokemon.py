@@ -14,17 +14,20 @@ class Pokemon:
 
         self.level_cap = 10
 
-        # 🔥 NEW: Event flags
+        # 🔥 EVENT FLAGS
         self.comeback_used = False
 
-        # Future systems
+        # 🔥 EMOTION SYSTEM
+        self.rage_active = False
+        self.survival_used = False
+
+        # Future
         self.bond = 0
         self.status = None
 
     # ----------------------------
     # EXP SYSTEM
     # ----------------------------
-
     def gain_exp(self, amount):
         print(f"{self.name} gained {amount} EXP!")
         self.exp += amount
@@ -43,7 +46,6 @@ class Pokemon:
     def level_up(self):
         self.exp -= self.exp_to_next_level()
         self.level += 1
-
         print(f"🔥 {self.name} leveled up to {self.level}!")
         self.increase_stats()
 
@@ -55,14 +57,25 @@ class Pokemon:
         self.hp = self.max_hp
 
     # ----------------------------
-    # DAMAGE + EVENTS
+    # DAMAGE + EMOTIONS
     # ----------------------------
-
     def take_damage(self, damage):
+        # 🔥 SURVIVAL SYSTEM (1 HP SAVE)
+        if damage >= self.hp and not self.survival_used:
+            self.survival_used = True
+            self.hp = 1
+            print(f"💖 {self.name} held on with 1 HP!")
+            return
+
         self.hp -= damage
 
         if self.hp < 0:
             self.hp = 0
+
+        # 🔥 RAGE TRIGGER
+        if self.is_low_hp() and not self.rage_active:
+            self.rage_active = True
+            print(f"😡 {self.name} entered RAGE MODE!")
 
     def is_low_hp(self):
         return self.hp <= (0.3 * self.max_hp)
@@ -70,9 +83,17 @@ class Pokemon:
     def trigger_comeback(self):
         if not self.comeback_used and self.is_low_hp():
             self.comeback_used = True
-            print(f"🔥 {self.name} refuses to give up! (COMEBACK TRIGGERED)")
+            print(f"🔥 {self.name} refuses to give up! (COMEBACK)")
             return True
         return False
+
+    def get_attack_multiplier(self):
+        multiplier = 1.0
+
+        if self.rage_active:
+            multiplier *= 1.2
+
+        return multiplier
 
     def is_alive(self):
         return self.hp > 0
@@ -83,4 +104,4 @@ class Pokemon:
             self.hp = self.max_hp
 
     def __str__(self):
-        return f"{self.name} (Lv {self.level}) EXP: {self.exp}/{self.exp_to_next_level()} HP: {self.hp}/{self.max_hp}"
+        return f"{self.name} (Lv {self.level}) HP: {self.hp}/{self.max_hp}"
