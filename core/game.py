@@ -30,7 +30,7 @@ class Game:
     def start(self):
         print("🎮 Pokémon Anime RPG Started\n")
 
-        # Create player manually
+        # Player with personality
         player_data = {
             "name": "Player",
             "personality": "calm",
@@ -38,7 +38,10 @@ class Game:
         }
 
         player = Trainer(player_data, self.pokemon_data)
-        opponent = self.trainers[0]
+        opponent = self.trainers[0]  # Rival (aggressive)
+
+        print(f"Player Personality: {player.personality}")
+        print(f"Opponent Personality: {opponent.personality}")
 
         # Start battle
         battle = BattleEngine(player, opponent)

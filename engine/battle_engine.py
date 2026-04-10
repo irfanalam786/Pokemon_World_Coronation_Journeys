@@ -32,32 +32,47 @@ class BattleEngine:
     def player_turn(self):
         print(f"{self.player_pokemon.name}'s turn!")
 
-        damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon)
+        damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon, self.player.personality)
         self.opponent_pokemon.take_damage(damage)
 
         print(f"{self.player_pokemon.name} dealt {damage} damage!")
         print(self.opponent_pokemon)
 
     # ----------------------------
-    # OPPONENT TURN (SCRIPT LOGIC)
+    # OPPONENT TURN (PERSONALITY BASED)
     # ----------------------------
     def opponent_turn(self):
         print(f"{self.opponent_pokemon.name}'s turn!")
 
-        damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon)
+        damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon, self.opponent.personality)
         self.player_pokemon.take_damage(damage)
 
         print(f"{self.opponent_pokemon.name} dealt {damage} damage!")
         print(self.player_pokemon)
 
     # ----------------------------
-    # DAMAGE CALCULATION
+    # DAMAGE WITH PERSONALITY
     # ----------------------------
-    def calculate_damage(self, attacker, defender):
+    def calculate_damage(self, attacker, defender, personality):
         base = attacker.attack
         defense = defender.defense
 
-        damage = int((base / defense) * 10)
+        damage = (base / defense) * 10
+
+        # 🎭 Personality modifiers
+        if personality == "aggressive":
+            damage *= 1.3
+
+        elif personality == "defensive":
+            damage *= 0.8
+
+        elif personality == "emotional":
+            import random
+            damage *= random.uniform(0.7, 1.5)
+
+        # calm = no change
+
+        damage = int(damage)
 
         if damage < 1:
             damage = 1
