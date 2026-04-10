@@ -2,11 +2,13 @@
   {
     "name": "Thunderbolt",
     "power": 90,
-    "type": "Electric"
+    "type": "Electric",
+    "signature": true
   },
   {
     "name": "Ember",
-    "power": 40,
-    "type": "Fire"
+    "power": 60,
+    "type": "Fire",
+    "signature": true
   }
 ]
