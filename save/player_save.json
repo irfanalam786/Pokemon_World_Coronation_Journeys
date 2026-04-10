@@ -1,6 +1,12 @@
 {
-  "name": "Player",
-  "team": ["Pikachu"],
-  "money": 1000,
-  "progress": {}
+    "name": "Player",
+    "team": [
+        {
+            "name": "Pikachu",
+            "hp": 21,
+            "max_hp": 35,
+            "level": 5,
+            "bond": 50
+        }
+    ]
 }

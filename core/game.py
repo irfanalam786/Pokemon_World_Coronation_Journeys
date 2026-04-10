@@ -9,7 +9,6 @@ class Game:
         self.loader = JSONLoader()
         self.save_manager = SaveManager()
 
-        # Load base data
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
 
@@ -36,17 +35,26 @@ class Game:
                 "team": []
             }, self.pokemon_data)
 
-            # Restore Pokémon
             player.team = []
+
             for p_data in save_data["team"]:
-                for base in self.pokemon_data:
-                    if base["name"] == p_data["name"]:
-                        p = Pokemon(base)
-                        p.hp = p_data["hp"]
-                        p.max_hp = p_data["max_hp"]
-                        p.level = p_data["level"]
-                        p.bond = p_data["bond"]
-                        player.team.append(p)
+
+                # 🔥 HANDLE OLD SAVE (STRING FORMAT)
+                if isinstance(p_data, str):
+                    for base in self.pokemon_data:
+                        if base["name"] == p_data:
+                            player.team.append(Pokemon(base))
+
+                # ✅ HANDLE NEW SAVE (DICT FORMAT)
+                else:
+                    for base in self.pokemon_data:
+                        if base["name"] == p_data["name"]:
+                            p = Pokemon(base)
+                            p.hp = p_data["hp"]
+                            p.max_hp = p_data["max_hp"]
+                            p.level = p_data["level"]
+                            p.bond = p_data["bond"]
+                            player.team.append(p)
 
             return player
 
@@ -61,5 +69,4 @@ class Game:
         battle = BattleEngine(player, opponent)
         battle.start_battle()
 
-        # 💾 Save after battle
         self.save_manager.save_game(player)
