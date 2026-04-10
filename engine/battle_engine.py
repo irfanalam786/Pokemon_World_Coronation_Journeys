@@ -37,13 +37,16 @@ class BattleEngine:
     # ----------------------------
     def player_turn(self):
         print(f"{self.player_pokemon.name}'s turn!")
-        self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, attack!")
 
-        damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon, self.player.personality, True)
+        # 🔥 Use signature move randomly (anime feel)
+        use_special = random.random() < 0.3
 
-        if self.player_pokemon.trigger_comeback():
-            self.dialogue.speak(self.player.name, "Don't give up!")
-            damage *= 1.2
+        if use_special:
+            self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, use {self.player_pokemon.signature_move}!")
+            damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon) * 1.5
+        else:
+            self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, attack!")
+            damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon)
 
         self.opponent_pokemon.take_damage(int(damage))
 
@@ -53,13 +56,15 @@ class BattleEngine:
     # ----------------------------
     def opponent_turn(self):
         print(f"{self.opponent_pokemon.name}'s turn!")
-        self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, finish it!")
 
-        damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon, self.opponent.personality)
+        use_special = random.random() < 0.3
 
-        if self.opponent_pokemon.trigger_comeback():
-            self.dialogue.speak(self.opponent.name, "I won't lose!")
-            damage *= 1.2
+        if use_special:
+            self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, use {self.opponent_pokemon.signature_move}!")
+            damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon) * 1.5
+        else:
+            self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, attack!")
+            damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon)
 
         self.player_pokemon.take_damage(int(damage))
 
@@ -67,22 +72,9 @@ class BattleEngine:
         print(self.player_pokemon)
 
     # ----------------------------
-    def calculate_damage(self, attacker, defender, personality, is_player=False):
+    def calculate_damage(self, attacker, defender):
         base = attacker.attack * attacker.get_attack_multiplier()
-        defense = defender.defense
-
-        damage = (base / defense) * 10
-
-        if personality == "aggressive":
-            damage *= 1.15
-        elif personality == "defensive":
-            damage *= 0.9
-        elif personality == "emotional":
-            damage *= random.uniform(0.9, 1.2)
-
-        if is_player:
-            damage *= 1.1
-
+        damage = (base / defender.defense) * 10
         return max(1, int(damage))
 
     # ----------------------------
