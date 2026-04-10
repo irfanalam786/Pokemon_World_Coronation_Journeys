@@ -30,20 +30,33 @@ class BattleEngine:
             if not self.player_pokemon.is_alive():
                 break
 
+            # 🔥 Apply status effects AFTER both turns
+            self.player_pokemon.apply_status_effect()
+            self.opponent_pokemon.apply_status_effect()
+
             turn += 1
 
         self.end_battle()
 
     # ----------------------------
     def player_turn(self):
+        if self.player_pokemon.is_paralyzed():
+            return
+
         print(f"{self.player_pokemon.name}'s turn!")
 
-        # 🔥 Use signature move randomly (anime feel)
+        self.player_pokemon.increase_bond(2)
+
         use_special = random.random() < 0.3
 
         if use_special:
             self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, use {self.player_pokemon.signature_move}!")
             damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon) * 1.5
+
+            # 🔥 Apply burn chance
+            if random.random() < 0.3:
+                self.opponent_pokemon.apply_status("burn")
+
         else:
             self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, attack!")
             damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon)
@@ -55,6 +68,9 @@ class BattleEngine:
 
     # ----------------------------
     def opponent_turn(self):
+        if self.opponent_pokemon.is_paralyzed():
+            return
+
         print(f"{self.opponent_pokemon.name}'s turn!")
 
         use_special = random.random() < 0.3
@@ -62,6 +78,11 @@ class BattleEngine:
         if use_special:
             self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, use {self.opponent_pokemon.signature_move}!")
             damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon) * 1.5
+
+            # 🔥 Apply poison chance
+            if random.random() < 0.3:
+                self.player_pokemon.apply_status("poison")
+
         else:
             self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, attack!")
             damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon)
@@ -74,8 +95,7 @@ class BattleEngine:
     # ----------------------------
     def calculate_damage(self, attacker, defender):
         base = attacker.attack * attacker.get_attack_multiplier()
-        damage = (base / defender.defense) * 10
-        return max(1, int(damage))
+        return max(1, int((base / defender.defense) * 10))
 
     # ----------------------------
     def end_battle(self):

@@ -12,19 +12,22 @@ class Pokemon:
         self.level = data.get("level", 1)
         self.signature_move = data.get("signature_move")
 
-        # ❤️ Bond system
+        # ❤️ Bond
         self.bond = 50
 
-        # Emotion system
+        # Emotion
         self.comeback_used = False
         self.rage_active = False
         self.survival_used = False
 
+        # ☠️ STATUS SYSTEM
+        self.status = None
+        self.poison_counter = 1
+
     # ----------------------------
-    # DAMAGE + SYSTEMS
+    # DAMAGE + STATUS
     # ----------------------------
     def take_damage(self, damage):
-        # Bond survival
         if damage >= self.hp:
             if self.bond >= 70 and not self.survival_used:
                 self.survival_used = True
@@ -37,11 +40,45 @@ class Pokemon:
         if self.hp < 0:
             self.hp = 0
 
-        # Rage trigger
         if self.is_low_hp() and not self.rage_active:
             self.rage_active = True
             print(f"😡 {self.name} entered RAGE MODE!")
 
+    # ----------------------------
+    # STATUS APPLY
+    # ----------------------------
+    def apply_status(self, status):
+        if self.status is None:
+            self.status = status
+            print(f"⚠️ {self.name} is now {status.upper()}!")
+
+    # ----------------------------
+    # STATUS EFFECT EACH TURN
+    # ----------------------------
+    def apply_status_effect(self):
+        if self.status == "burn":
+            damage = int(self.max_hp * 0.05)
+            self.hp -= damage
+            print(f"🔥 {self.name} is hurt by burn! (-{damage})")
+
+        elif self.status == "poison":
+            damage = int(self.max_hp * 0.05 * self.poison_counter)
+            self.hp -= damage
+            self.poison_counter += 1
+            print(f"☠️ {self.name} is hurt by poison! (-{damage})")
+
+        if self.hp < 0:
+            self.hp = 0
+
+    def is_paralyzed(self):
+        if self.status == "paralysis":
+            import random
+            if random.random() < 0.3:
+                print(f"⚡ {self.name} is paralyzed and can't move!")
+                return True
+        return False
+
+    # ----------------------------
     def is_low_hp(self):
         return self.hp <= (0.3 * self.max_hp)
 
@@ -53,9 +90,7 @@ class Pokemon:
         return False
 
     def increase_bond(self, amount):
-        self.bond += amount
-        if self.bond > 100:
-            self.bond = 100
+        self.bond = min(100, self.bond + amount)
 
     def get_attack_multiplier(self):
         multiplier = 1.0
@@ -74,4 +109,4 @@ class Pokemon:
         return self.hp > 0
 
     def __str__(self):
-        return f"{self.name} (Lv {self.level}) HP: {self.hp}/{self.max_hp} Bond: {self.bond}"
+        return f"{self.name} HP: {self.hp}/{self.max_hp} Status: {self.status}"
