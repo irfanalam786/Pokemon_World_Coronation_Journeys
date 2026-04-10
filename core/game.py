@@ -2,6 +2,7 @@ from engine.json_loader import JSONLoader
 from models.pokemon import Pokemon
 from models.trainer import Trainer
 from models.item import Item
+from engine.battle_engine import BattleEngine
 
 class Game:
     def __init__(self):
@@ -12,7 +13,7 @@ class Game:
         self.trainers_data = self.loader.load("trainers.json")
         self.items_data = self.loader.load("items.json")
 
-        # Convert to objects
+        # Create objects
         self.pokemon_objects = self.create_pokemon_objects()
         self.trainers = self.create_trainers()
         self.items = self.create_items()
@@ -26,38 +27,19 @@ class Game:
     def create_items(self):
         return [Item(i) for i in self.items_data]
 
-    def get_item_by_name(self, name):
-        for item in self.items:
-            if item.name == name:
-                return item
-        return None
-
     def start(self):
         print("🎮 Pokémon Anime RPG Started\n")
 
-        pokemon = self.pokemon_objects[0]
+        # Create player manually
+        player_data = {
+            "name": "Player",
+            "personality": "calm",
+            "team": ["Pikachu"]
+        }
 
-        print("=== INITIAL STATE ===")
-        print(pokemon)
+        player = Trainer(player_data, self.pokemon_data)
+        opponent = self.trainers[0]
 
-        # Get items
-        potion = self.get_item_by_name("Potion")
-        rare_candy = self.get_item_by_name("Rare Candy")
-
-        # Damage Pokémon first
-        print("\n--- Simulating Damage ---")
-        pokemon.take_damage(20)
-        print(pokemon)
-
-        # Use Potion
-        potion.use(pokemon)
-        print(pokemon)
-
-        # Use Rare Candy multiple times
-        print("\n--- Using Rare Candy ---")
-        for i in range(7):
-            print(f"\nAttempt {i+1}")
-            rare_candy.use(pokemon)
-
-        print("\n=== FINAL STATE ===")
-        print(pokemon)
+        # Start battle
+        battle = BattleEngine(player, opponent)
+        battle.start_battle()
