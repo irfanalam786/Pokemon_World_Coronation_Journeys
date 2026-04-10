@@ -1,48 +1,65 @@
 from engine.json_loader import JSONLoader
 from models.pokemon import Pokemon
 from models.trainer import Trainer
-from models.item import Item
 from engine.battle_engine import BattleEngine
+from systems.save_manager import SaveManager
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
+        self.save_manager = SaveManager()
 
-        # Load data
+        # Load base data
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
-        self.items_data = self.loader.load("items.json")
 
-        # Create objects
-        self.pokemon_objects = self.create_pokemon_objects()
         self.trainers = self.create_trainers()
-        self.items = self.create_items()
-
-    def create_pokemon_objects(self):
-        return [Pokemon(p) for p in self.pokemon_data]
 
     def create_trainers(self):
         return [Trainer(t, self.pokemon_data) for t in self.trainers_data]
 
-    def create_items(self):
-        return [Item(i) for i in self.items_data]
-
-    def start(self):
-        print("🎮 Pokémon Anime RPG Started\n")
-
-        # Player with personality
+    def create_player(self):
         player_data = {
             "name": "Player",
             "personality": "calm",
             "team": ["Pikachu"]
         }
+        return Trainer(player_data, self.pokemon_data)
 
-        player = Trainer(player_data, self.pokemon_data)
-        opponent = self.trainers[0]  # Rival (aggressive)
+    def load_or_create_player(self):
+        save_data = self.save_manager.load_game()
 
-        print(f"Player Personality: {player.personality}")
-        print(f"Opponent Personality: {opponent.personality}")
+        if save_data:
+            player = Trainer({
+                "name": save_data["name"],
+                "personality": "calm",
+                "team": []
+            }, self.pokemon_data)
 
-        # Start battle
+            # Restore Pokémon
+            player.team = []
+            for p_data in save_data["team"]:
+                for base in self.pokemon_data:
+                    if base["name"] == p_data["name"]:
+                        p = Pokemon(base)
+                        p.hp = p_data["hp"]
+                        p.max_hp = p_data["max_hp"]
+                        p.level = p_data["level"]
+                        p.bond = p_data["bond"]
+                        player.team.append(p)
+
+            return player
+
+        return self.create_player()
+
+    def start(self):
+        print("🎮 Pokémon Anime RPG Started\n")
+
+        player = self.load_or_create_player()
+        opponent = self.trainers[0]
+
         battle = BattleEngine(player, opponent)
         battle.start_battle()
+
+        # 💾 Save after battle
+        self.save_manager.save_game(player)
