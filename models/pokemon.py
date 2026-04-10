@@ -1,99 +1,77 @@
-import random
-from systems.dialogue_manager import DialogueManager
+class Pokemon:
+    def __init__(self, data):
+        self.name = data.get("name")
+        self.type = data.get("type")
 
-class BattleEngine:
-    def __init__(self, player, opponent):
-        self.player = player
-        self.opponent = opponent
+        self.max_hp = data.get("hp")
+        self.hp = self.max_hp
+        self.attack = data.get("attack")
+        self.defense = data.get("defense")
+        self.speed = data.get("speed")
 
-        self.dialogue = DialogueManager(speed=0.005)
+        self.level = data.get("level", 1)
+        self.signature_move = data.get("signature_move")
 
-        self.player_pokemon = player.get_active_pokemon()
-        self.opponent_pokemon = opponent.get_active_pokemon()
+        # ❤️ Bond system
+        self.bond = 50
 
-    def start_battle(self):
-        print(f"\n⚔️ Battle Start: {self.player.name} vs {self.opponent.name}\n")
-
-        self.dialogue.speak(self.player.name, "Let's win this battle!")
-        self.dialogue.speak(self.opponent.name, "You don't stand a chance!")
-
-        turn = 1
-
-        while self.player_pokemon.is_alive() and self.opponent_pokemon.is_alive():
-            print(f"\n--- Turn {turn} ---")
-
-            self.player_turn()
-            if not self.opponent_pokemon.is_alive():
-                break
-
-            self.opponent_turn()
-            if not self.player_pokemon.is_alive():
-                break
-
-            turn += 1
-
-        self.end_battle()
+        # Emotion system
+        self.comeback_used = False
+        self.rage_active = False
+        self.survival_used = False
 
     # ----------------------------
-    def player_turn(self):
-        print(f"{self.player_pokemon.name}'s turn!")
-
-        # ❤️ Increase bond slightly each turn
-        self.player_pokemon.increase_bond(2)
-
-        use_special = random.random() < 0.3
-
-        if use_special:
-            self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, use {self.player_pokemon.signature_move}!")
-            damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon) * 1.5
-        else:
-            self.dialogue.speak(self.player.name, f"{self.player_pokemon.name}, attack!")
-            damage = self.calculate_damage(self.player_pokemon, self.opponent_pokemon)
-
-        if self.player_pokemon.trigger_comeback():
-            self.dialogue.speak(self.player.name, "Don't give up!")
-            damage *= 1.2
-
-        self.opponent_pokemon.take_damage(int(damage))
-
-        print(f"{self.player_pokemon.name} dealt {int(damage)} damage!")
-        print(self.opponent_pokemon)
-
+    # DAMAGE + SYSTEMS
     # ----------------------------
-    def opponent_turn(self):
-        print(f"{self.opponent_pokemon.name}'s turn!")
+    def take_damage(self, damage):
+        # Bond survival
+        if damage >= self.hp:
+            if self.bond >= 70 and not self.survival_used:
+                self.survival_used = True
+                self.hp = 1
+                print(f"💖 {self.name} endured the hit because of strong bond!")
+                return
 
-        use_special = random.random() < 0.3
+        self.hp -= damage
 
-        if use_special:
-            self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, use {self.opponent_pokemon.signature_move}!")
-            damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon) * 1.5
-        else:
-            self.dialogue.speak(self.opponent.name, f"{self.opponent_pokemon.name}, attack!")
-            damage = self.calculate_damage(self.opponent_pokemon, self.player_pokemon)
+        if self.hp < 0:
+            self.hp = 0
 
-        if self.opponent_pokemon.trigger_comeback():
-            self.dialogue.speak(self.opponent.name, "I won't lose!")
-            damage *= 1.2
+        # Rage trigger
+        if self.is_low_hp() and not self.rage_active:
+            self.rage_active = True
+            print(f"😡 {self.name} entered RAGE MODE!")
 
-        self.player_pokemon.take_damage(int(damage))
+    def is_low_hp(self):
+        return self.hp <= (0.3 * self.max_hp)
 
-        print(f"{self.opponent_pokemon.name} dealt {int(damage)} damage!")
-        print(self.player_pokemon)
+    def trigger_comeback(self):
+        if not self.comeback_used and self.is_low_hp():
+            self.comeback_used = True
+            print(f"🔥 {self.name} refuses to give up!")
+            return True
+        return False
 
-    # ----------------------------
-    def calculate_damage(self, attacker, defender):
-        base = attacker.attack * attacker.get_attack_multiplier()
-        damage = (base / defender.defense) * 10
-        return max(1, int(damage))
+    def increase_bond(self, amount):
+        self.bond += amount
+        if self.bond > 100:
+            self.bond = 100
 
-    # ----------------------------
-    def end_battle(self):
-        print("\n⚔️ Battle End!")
+    def get_attack_multiplier(self):
+        multiplier = 1.0
 
-        if self.player_pokemon.is_alive():
-            self.dialogue.speak(self.player.name, "We did it!")
-            print(f"🏆 {self.player.name} wins!")
-        else:
-            self.dialogue.speak(self.opponent.name, "Too easy!")
-            print(f"💀 {self.opponent.name} wins!")
+        if self.rage_active:
+            multiplier *= 1.2
+
+        if self.bond >= 70:
+            multiplier *= 1.3
+        elif self.bond >= 30:
+            multiplier *= 1.1
+
+        return multiplier
+
+    def is_alive(self):
+        return self.hp > 0
+
+    def __str__(self):
+        return f"{self.name} (Lv {self.level}) HP: {self.hp}/{self.max_hp} Bond: {self.bond}"
