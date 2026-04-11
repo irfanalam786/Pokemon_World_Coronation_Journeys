@@ -170,3 +170,37 @@ class BattleEngine:
 
         else:
             print(f"💀 {self.opponent.name} wins!")
+            
+    # ADD THESE FUNCTIONS INSIDE CLASS
+
+def player_turn_ui(self):
+    move_name = self.player_pokemon.moves[0]  # auto move for now
+    move = self.moves_data.get(move_name, {"power": 40, "type": "Normal"})
+
+    damage = self.calculate_damage(
+        self.player_pokemon,
+        self.opponent_pokemon,
+        move["power"],
+        1
+    )
+
+    self.opponent_pokemon.take_damage(int(damage))
+
+    return f"{self.player_pokemon.name} used {move_name}! Damage: {int(damage)}"
+
+
+def opponent_turn_ui(self):
+    if not self.opponent_pokemon:
+        return ""
+
+    move_name = self.opponent_pokemon.moves[0]
+    move = self.moves_data.get(move_name, {"power": 40, "type": "Normal"})
+
+    damage = self.calculate_damage(
+        self.opponent_pokemon,
+        self.player_pokemon,
+        move["power"],
+        1
+    )
+
+    self.player_pokemon.take_damage(int(damage))
