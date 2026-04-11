@@ -7,6 +7,7 @@ class BattleEngine:
     def __init__(self, player, opponent, moves_data=None):
         self.player = player
         self.opponent = opponent
+        self.opponent_pokemon.sound.play_attack()
 
         if moves_data:
             self.moves_data = {m["name"]: m for m in moves_data}
@@ -25,11 +26,10 @@ class BattleEngine:
 
     def start_battle(self):
         print(f"\n⚔️ Battle Start: {self.player.name} vs {self.opponent.name}\n")
-        # ADD after battle start print
 
         self.player_pokemon.show_image()
         self.opponent_pokemon.show_image()
-
+        self.opponent_pokemon.sound.play_attack()
         turn = 1
 
         while self.player.has_pokemon_left() and self.opponent.has_pokemon_left():
