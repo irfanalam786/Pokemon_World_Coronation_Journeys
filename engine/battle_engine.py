@@ -22,7 +22,8 @@ class BattleEngine:
 
         self.player_pokemon.show_image()
         self.opponent_pokemon.show_image()
-
+        if self.opponent.type == "gym":
+    print("🔥 BOSS BATTLE START! 🔥")
         turn = 1
 
         while self.player.has_pokemon_left() and self.opponent.has_pokemon_left():
