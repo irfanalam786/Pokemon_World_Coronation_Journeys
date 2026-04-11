@@ -1,16 +1,18 @@
 from engine.json_loader import JSONLoader
-from models.pokemon import Pokemon
 from models.trainer import Trainer
 from engine.battle_engine import BattleEngine
 from systems.save_manager import SaveManager
+from systems.difficulty_manager import DifficultyManager
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
         self.save_manager = SaveManager()
+        self.difficulty = DifficultyManager()
 
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
+        self.moves_data = self.loader.load("moves.json")
 
         self.trainers = self.create_trainers()
 
@@ -18,12 +20,11 @@ class Game:
         return [Trainer(t, self.pokemon_data) for t in self.trainers_data]
 
     def create_player(self):
-        player_data = {
+        return Trainer({
             "name": "Player",
             "personality": "calm",
             "team": ["Pikachu"]
-        }
-        return Trainer(player_data, self.pokemon_data)
+        }, self.pokemon_data)
 
     def load_or_create_player(self):
         save_data = self.save_manager.load_game()
@@ -37,24 +38,33 @@ class Game:
 
             player.team = []
 
+            from models.pokemon import Pokemon
+
             for p_data in save_data["team"]:
+                for base in self.pokemon_data:
+                    # 🔥 FIX: match BOTH base and evolved names
+                    if base["name"] == p_data["name"] or \
+                       (base.get("evolution") and base["evolution"]["name"] == p_data["name"]):
 
-                # 🔥 HANDLE OLD SAVE (STRING FORMAT)
-                if isinstance(p_data, str):
-                    for base in self.pokemon_data:
-                        if base["name"] == p_data:
-                            player.team.append(Pokemon(base))
+                        p = Pokemon(base)
 
-                # ✅ HANDLE NEW SAVE (DICT FORMAT)
-                else:
-                    for base in self.pokemon_data:
-                        if base["name"] == p_data["name"]:
-                            p = Pokemon(base)
-                            p.hp = p_data["hp"]
-                            p.max_hp = p_data["max_hp"]
-                            p.level = p_data["level"]
-                            p.bond = p_data["bond"]
-                            player.team.append(p)
+                        # Restore stats
+                        p.hp = p_data["hp"]
+                        p.max_hp = p_data["max_hp"]
+                        p.level = p_data["level"]
+                        p.bond = p_data["bond"]
+
+                        # 🔥 FIX: if already evolved → update name
+                        if base.get("evolution") and base["evolution"]["name"] == p_data["name"]:
+                            p.name = p_data["name"]
+                            p.evolution = None  # prevent re-evolution
+
+                        # Heal if fainted
+                        if p.hp <= 0:
+                            print(f"⚠️ {p.name} was fainted. Restoring HP.")
+                            p.hp = p.max_hp
+
+                        player.team.append(p)
 
             return player
 
@@ -66,7 +76,12 @@ class Game:
         player = self.load_or_create_player()
         opponent = self.trainers[0]
 
-        battle = BattleEngine(player, opponent)
+        # Apply difficulty
+        for p in opponent.team:
+            self.difficulty.adjust_pokemon(p)
+
+        battle = BattleEngine(player, opponent, self.moves_data)
         battle.start_battle()
 
+        self.difficulty.increase_difficulty()
         self.save_manager.save_game(player)

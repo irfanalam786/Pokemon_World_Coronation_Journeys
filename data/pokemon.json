@@ -5,9 +5,16 @@
     "hp": 35,
     "attack": 55,
     "defense": 40,
-    "speed": 90,
     "level": 5,
-    "signature_move": "Thunderbolt"
+    "role": "speed",
+    "moves": ["Thunderbolt", "Quick Attack"],
+    "evolution": {
+      "name": "Raichu",
+      "level": 6,
+      "hp": 60,
+      "attack": 90,
+      "defense": 55
+    }
   },
   {
     "name": "Charmander",
@@ -15,8 +22,109 @@
     "hp": 39,
     "attack": 52,
     "defense": 43,
-    "speed": 65,
     "level": 5,
-    "signature_move": "Ember"
+    "role": "attacker",
+    "moves": ["Ember", "Scratch"],
+    "evolution": {
+      "name": "Charmeleon",
+      "level": 6,
+      "hp": 58,
+      "attack": 64,
+      "defense": 58
+    }
+  },
+  {
+    "name": "Bulbasaur",
+    "type": "Grass",
+    "hp": 45,
+    "attack": 49,
+    "defense": 49,
+    "level": 5,
+    "role": "defender",
+    "moves": ["Vine Whip", "Tackle"],
+    "evolution": {
+      "name": "Ivysaur",
+      "level": 6,
+      "hp": 60,
+      "attack": 62,
+      "defense": 63
+    }
+  },
+  {
+    "name": "Squirtle",
+    "type": "Water",
+    "hp": 44,
+    "attack": 48,
+    "defense": 65,
+    "level": 5,
+    "role": "defender",
+    "moves": ["Water Gun", "Tackle"],
+    "evolution": {
+      "name": "Wartortle",
+      "level": 6,
+      "hp": 59,
+      "attack": 63,
+      "defense": 80
+    }
+  },
+  {
+    "name": "Onix",
+    "type": "Rock",
+    "hp": 35,
+    "attack": 45,
+    "defense": 160,
+    "level": 5,
+    "role": "defender",
+    "moves": ["Rock Throw", "Tackle"]
+  },
+  {
+    "name": "Geodude",
+    "type": "Rock",
+    "hp": 40,
+    "attack": 80,
+    "defense": 100,
+    "level": 5,
+    "role": "attacker",
+    "moves": ["Rock Throw", "Tackle"]
+  },
+  {
+    "name": "Staryu",
+    "type": "Water",
+    "hp": 30,
+    "attack": 45,
+    "defense": 55,
+    "level": 5,
+    "role": "speed",
+    "moves": ["Water Gun", "Swift"]
+  },
+  {
+    "name": "Starmie",
+    "type": "Water",
+    "hp": 60,
+    "attack": 75,
+    "defense": 85,
+    "level": 5,
+    "role": "attacker",
+    "moves": ["Water Gun", "Swift", "Psychic"]
+  },
+  {
+    "name": "Vileplume",
+    "type": "Grass",
+    "hp": 75,
+    "attack": 80,
+    "defense": 85,
+    "level": 5,
+    "role": "attacker",
+    "moves": ["Petal Dance", "Solar Beam"]
+  },
+  {
+    "name": "Tangela",
+    "type": "Grass",
+    "hp": 65,
+    "attack": 55,
+    "defense": 115,
+    "level": 5,
+    "role": "defender",
+    "moves": ["Vine Whip", "Bind"]
   }
 ]

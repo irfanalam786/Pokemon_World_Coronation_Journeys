@@ -6,12 +6,8 @@ class Trainer:
         self.personality = data.get("personality")
         self.team_names = data.get("team", [])
 
-        # Convert Pokémon names → actual objects
         self.team = self.build_team(pokemon_data)
-
-        # Future systems
-        self.memory = {}
-        self.bond_with_player = 0
+        self.active_index = 0
 
     def build_team(self, pokemon_data):
         team = []
@@ -22,10 +18,37 @@ class Trainer:
         return team
 
     def get_active_pokemon(self):
-        for p in self.team:
+        if self.active_index < len(self.team):
+            return self.team[self.active_index]
+        return None
+
+    # ----------------------------
+    # 🔄 MANUAL SWITCH
+    # ----------------------------
+    def manual_switch(self):
+        print("\nChoose Pokémon:")
+
+        for i, p in enumerate(self.team):
+            status = " (Fainted)" if not p.is_alive() else ""
+            print(f"{i + 1}. {p.name} {status}")
+
+        choice = int(input("Enter choice: ")) - 1
+
+        if 0 <= choice < len(self.team) and self.team[choice].is_alive():
+            self.active_index = choice
+            print(f"\n🔄 {self.name} switched to {self.team[choice].name}!")
+            return self.team[choice]
+
+        print("❌ Invalid choice!")
+        return self.get_active_pokemon()
+
+    def switch_next(self):
+        for i, p in enumerate(self.team):
             if p.is_alive():
+                self.active_index = i
+                print(f"\n🔄 {self.name} sends out {p.name}!")
                 return p
         return None
 
-    def __str__(self):
-        return f"{self.name} ({self.personality})"
+    def has_pokemon_left(self):
+        return any(p.is_alive() for p in self.team)

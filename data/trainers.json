@@ -3,5 +3,25 @@
     "name": "Rival",
     "personality": "aggressive",
     "team": ["Charmander"]
+  },
+  {
+    "name": "Brock",
+    "personality": "calm",
+    "team": ["Onix", "Geodude"]
+  },
+  {
+    "name": "Misty",
+    "personality": "calm",
+    "team": ["Staryu", "Starmie"]
+  },
+  {
+    "name": "Lt. Surge",
+    "personality": "aggressive",
+    "team": ["Pikachu"]
+  },
+  {
+    "name": "Erika",
+    "personality": "calm",
+    "team": ["Vileplume", "Tangela"]
   }
 ]
