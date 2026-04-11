@@ -1,4 +1,7 @@
 import tkinter as tk
+from PIL import Image, ImageTk
+import requests
+from io import BytesIO
 
 class GameUI:
     def __init__(self):
@@ -12,11 +15,11 @@ class GameUI:
         self.top_frame = tk.Frame(self.root, height=300, bg="lightblue")
         self.top_frame.pack(fill="both")
 
-        self.player_label = tk.Label(self.top_frame, text="Player Pokémon", bg="lightblue", font=("Arial", 14))
-        self.player_label.pack(side="left", padx=50, pady=50)
+        self.player_image_label = tk.Label(self.top_frame, bg="lightblue")
+        self.player_image_label.pack(side="left", padx=50, pady=20)
 
-        self.opponent_label = tk.Label(self.top_frame, text="Opponent Pokémon", bg="lightblue", font=("Arial", 14))
-        self.opponent_label.pack(side="right", padx=50, pady=50)
+        self.opponent_image_label = tk.Label(self.top_frame, bg="lightblue")
+        self.opponent_image_label.pack(side="right", padx=50, pady=20)
 
         # ----------------------------
         # MIDDLE FRAME (Dialogue)
@@ -42,5 +45,32 @@ class GameUI:
         self.item_btn = tk.Button(self.bottom_frame, text="Item", width=15)
         self.item_btn.pack(side="left", padx=20, pady=20)
 
+    # ----------------------------
+    def load_image_from_url(self, url, size=(150, 150)):
+        response = requests.get(url)
+        img_data = response.content
+        img = Image.open(BytesIO(img_data))
+        img = img.resize(size)
+
+        return ImageTk.PhotoImage(img)
+
+    # ----------------------------
+    def show_pokemon(self, player_url, opponent_url):
+        player_img = self.load_image_from_url(player_url)
+        opponent_img = self.load_image_from_url(opponent_url)
+
+        self.player_image_label.config(image=player_img)
+        self.player_image_label.image = player_img
+
+        self.opponent_image_label.config(image=opponent_img)
+        self.opponent_image_label.image = opponent_img
+
+    # ----------------------------
     def run(self):
+        # TEST IMAGES
+        self.show_pokemon(
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+        )
+
         self.root.mainloop()
