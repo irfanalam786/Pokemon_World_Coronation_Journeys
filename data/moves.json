@@ -1,7 +1,7 @@
 [
-  { "name": "Thunderbolt", "power": 90, "type": "Electric" },
+  { "name": "Thunderbolt", "power": 90, "type": "Electric", "status": "paralysis", "chance": 0.3 },
   { "name": "Quick Attack", "power": 40, "type": "Normal" },
-  { "name": "Ember", "power": 60, "type": "Fire" },
+  { "name": "Ember", "power": 60, "type": "Fire", "status": "burn", "chance": 0.3 },
   { "name": "Scratch", "power": 40, "type": "Normal" },
   { "name": "Vine Whip", "power": 45, "type": "Grass" },
   { "name": "Tackle", "power": 40, "type": "Normal" },
