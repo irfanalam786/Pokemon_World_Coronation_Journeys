@@ -3,7 +3,7 @@
   { "name": "Quick Attack", "power": 40, "type": "Normal" },
   { "name": "Ember", "power": 60, "type": "Fire", "status": "burn", "chance": 0.3 },
   { "name": "Scratch", "power": 40, "type": "Normal" },
-  { "name": "Vine Whip", "power": 45, "type": "Grass" },
+  { "name": "Vine Whip", "power": 45, "type": "Grass", "status": "leech seed", "chance": 0.2 },
   { "name": "Tackle", "power": 40, "type": "Normal" },
   { "name": "Water Gun", "power": 40, "type": "Water" },
   { "name": "Rock Throw", "power": 50, "type": "Rock" },

@@ -1,11 +1,11 @@
 from systems.image_manager import ImageManager
 from systems.sound_manager import SoundManager
+import random
 
 class Pokemon:
     def __init__(self, data):
         self.name = data.get("name")
         self.type = data.get("type")
-        self.role = data.get("role", "attacker")
 
         self.max_hp = data.get("hp")
         self.hp = self.max_hp
@@ -23,20 +23,49 @@ class Pokemon:
         self.image_manager = ImageManager()
         self.sound = SoundManager()
 
+        self.status = None
+        self.poison_counter = 1
+
         self.bond = 50
         self.clutch_used = False
         self.survival_used = False
 
     # ----------------------------
+    def apply_status(self, status):
+        if self.status is None:
+            self.status = status
+            print(f"⚠️ {self.name} is now {status.upper()}!")
+
+    def process_status(self):
+        if self.status == "burn":
+            dmg = int(self.max_hp * 0.05)
+            self.hp -= dmg
+            print(f"🔥 Burn damage: {dmg}")
+
+        elif self.status == "poison":
+            dmg = int(self.max_hp * 0.05 * self.poison_counter)
+            self.hp -= dmg
+            self.poison_counter += 1
+            print(f"☠️ Poison damage: {dmg}")
+
+        if self.hp < 0:
+            self.hp = 0
+
+    def is_paralyzed(self):
+        if self.status == "paralysis":
+            if random.random() < 0.3:
+                print(f"⚡ {self.name} is paralyzed! Can't move!")
+                return True
+        return False
+
+    # ----------------------------
     def show_image(self):
         if self.image:
-            print(f"🖼️ Showing {self.name} image...")
             self.image_manager.show(self.image)
 
     # ----------------------------
     def gain_exp(self, opponent_level):
         exp_gain = 20 + (opponent_level * 10)
-
         print(f"✨ {self.name} gained {exp_gain} EXP!")
         self.exp += exp_gain
 
@@ -58,7 +87,6 @@ class Pokemon:
 
         self.check_evolution()
 
-    # ----------------------------
     def check_evolution(self):
         if not self.evolution:
             return
@@ -78,7 +106,6 @@ class Pokemon:
             self.hp = self.max_hp
 
             print(f"🧬 {old_name} evolved into {self.name}!")
-
             self.show_image()
 
             self.evolution = None
@@ -126,11 +153,8 @@ class Pokemon:
         if self.hp < 0:
             self.hp = 0
 
-    def increase_bond(self, amount):
-        self.bond = min(100, self.bond + amount)
-
     def is_alive(self):
         return self.hp > 0
 
     def __str__(self):
-        return f"{self.name} Lv:{self.level} HP:{self.hp}/{self.max_hp}"
+        return f"{self.name} HP:{self.hp}/{self.max_hp} Status:{self.status}"
