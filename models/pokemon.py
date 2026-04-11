@@ -1,4 +1,5 @@
 from systems.image_manager import ImageManager
+from systems.sound_manager import SoundManager
 
 class Pokemon:
     def __init__(self, data):
@@ -20,6 +21,7 @@ class Pokemon:
         self.evolution = data.get("evolution")
 
         self.image_manager = ImageManager()
+        self.sound = SoundManager()
 
         self.bond = 50
         self.clutch_used = False
@@ -63,6 +65,7 @@ class Pokemon:
 
         if self.level >= self.evolution["level"]:
             print(f"\n✨ {self.name} is evolving...")
+            self.sound.play_evolution()
 
             old_name = self.name
 
@@ -76,7 +79,6 @@ class Pokemon:
 
             print(f"🧬 {old_name} evolved into {self.name}!")
 
-            # 🔥 SHOW EVOLUTION IMAGE
             self.show_image()
 
             self.evolution = None
@@ -101,6 +103,7 @@ class Pokemon:
         if not self.clutch_used and self.is_low_hp():
             self.clutch_used = True
             print(f"💥 {self.name} enters CLUTCH MODE!")
+            self.sound.play_clutch()
             return True
         return False
 
