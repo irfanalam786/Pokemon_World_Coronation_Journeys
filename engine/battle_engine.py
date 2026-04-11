@@ -40,12 +40,18 @@ class BattleEngine:
             if not self.player.has_pokemon_left():
                 break
 
+            # 🔥 APPLY STATUS EFFECTS
+            self.player_pokemon.process_status()
+            self.opponent_pokemon.process_status()
+
             turn += 1
 
         self.end_battle()
 
-    # ----------------------------
     def player_turn(self):
+        if self.player_pokemon.is_paralyzed():
+            return
+
         print(f"\nYour Pokémon: {self.player_pokemon}")
 
         print("\nChoose action:")
@@ -55,7 +61,6 @@ class BattleEngine:
 
         choice = input("Enter choice: ")
 
-        # ----------------------------
         if choice == "2":
             self.player_pokemon = self.player.manual_switch()
             return
@@ -68,7 +73,6 @@ class BattleEngine:
             if used:
                 return
 
-        # ----------------------------
         move_name = self.player_pokemon.choose_move()
         move = self.moves_data.get(move_name, {"power": 40, "type": "Normal"})
 
@@ -83,6 +87,10 @@ class BattleEngine:
             effectiveness
         )
 
+        # 🔥 APPLY STATUS
+        if "status" in move and random.random() < move.get("chance", 0):
+            self.opponent_pokemon.apply_status(move["status"])
+
         self.print_effectiveness(effectiveness)
 
         if self.player_pokemon.trigger_clutch():
@@ -95,9 +103,8 @@ class BattleEngine:
         print(f"Damage: {int(damage)}")
         print(self.opponent_pokemon)
 
-    # ----------------------------
     def opponent_turn(self):
-        if self.opponent_pokemon is None:
+        if self.opponent_pokemon is None or self.opponent_pokemon.is_paralyzed():
             return
 
         move_name = random.choice(self.opponent_pokemon.moves)
@@ -114,6 +121,9 @@ class BattleEngine:
             effectiveness
         )
 
+        if "status" in move and random.random() < move.get("chance", 0):
+            self.player_pokemon.apply_status(move["status"])
+
         self.print_effectiveness(effectiveness)
 
         if self.opponent_pokemon.trigger_clutch():
@@ -126,7 +136,6 @@ class BattleEngine:
         print(f"Damage: {int(damage)}")
         print(self.player_pokemon)
 
-    # ----------------------------
     def check_faint(self):
         if self.player_pokemon and not self.player_pokemon.is_alive():
             print(f"💀 {self.player_pokemon.name} fainted!")
@@ -137,7 +146,6 @@ class BattleEngine:
             self.last_opponent_level = self.opponent_pokemon.level
             self.opponent_pokemon = self.opponent.switch_next()
 
-    # ----------------------------
     def calculate_damage(self, attacker, defender, power, effectiveness):
         base = attacker.attack * attacker.get_attack_multiplier()
         return max(1, int((base * power / defender.defense) / 10 * effectiveness))
@@ -148,7 +156,6 @@ class BattleEngine:
         elif value < 1:
             print("🛡️ It's not very effective...")
 
-    # ----------------------------
     def end_battle(self):
         print("\n⚔️ Battle End!")
 
