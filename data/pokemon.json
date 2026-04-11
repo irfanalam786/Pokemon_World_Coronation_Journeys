@@ -46,6 +46,7 @@
     "level": 5,
     "role": "defender",
     "moves": ["Vine Whip", "Tackle"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
     "evolution": {
       "name": "Ivysaur",
       "level": 6,
