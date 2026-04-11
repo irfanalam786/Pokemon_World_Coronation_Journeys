@@ -105,8 +105,8 @@
     "defense": 55,
     "level": 5,
     "role": "speed",
-    "moves": ["Water Gun", "Swift"]
-    
+    "moves": ["Water Gun", "Swift"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png"
   },
   {
     "name": "Starmie",
@@ -116,7 +116,9 @@
     "defense": 85,
     "level": 5,
     "role": "attacker",
-    "moves": ["Water Gun", "Swift", "Psychic"]
+    "moves": ["Water Gun", "Swift", "Psychic"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
+
   },
   {
     "name": "Vileplume",
@@ -126,7 +128,8 @@
     "defense": 85,
     "level": 5,
     "role": "attacker",
-    "moves": ["Petal Dance", "Solar Beam"]
+    "moves": ["Petal Dance", "Solar Beam"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"
   },
   {
     "name": "Tangela",
@@ -136,6 +139,7 @@
     "defense": 115,
     "level": 5,
     "role": "defender",
-    "moves": ["Vine Whip", "Bind"]
+    "moves": ["Vine Whip", "Bind"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png"
   }
 ]
