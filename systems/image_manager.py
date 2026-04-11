@@ -1,12 +1,8 @@
-import requests
-from PIL import Image
-from io import BytesIO
+import webbrowser
 
 class ImageManager:
     def show(self, image_url):
         try:
-            response = requests.get(image_url)
-            img = Image.open(BytesIO(response.content))
-            img.show()
+            webbrowser.open(image_url)
         except Exception as e:
             print(f"[Image Error]: {e}")
