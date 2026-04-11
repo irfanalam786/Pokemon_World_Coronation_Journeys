@@ -1,3 +1,5 @@
+from systems.image_manager import ImageManager
+
 class Pokemon:
     def __init__(self, data):
         self.name = data.get("name")
@@ -14,18 +16,23 @@ class Pokemon:
 
         self.moves = data.get("moves", [])
 
-        # 🧬 Evolution data
+        self.image = data.get("image")
         self.evolution = data.get("evolution")
+
+        self.image_manager = ImageManager()
 
         self.bond = 50
         self.clutch_used = False
         self.survival_used = False
 
     # ----------------------------
-    # EXP SYSTEM
+    def show_image(self):
+        if self.image:
+            print(f"🖼️ Showing {self.name} image...")
+            self.image_manager.show(self.image)
+
     # ----------------------------
     def gain_exp(self, opponent_level):
-        # 🔥 EXP based on opponent strength
         exp_gain = 20 + (opponent_level * 10)
 
         print(f"✨ {self.name} gained {exp_gain} EXP!")
@@ -35,72 +42,26 @@ class Pokemon:
             self.exp -= self.exp_to_next_level()
             self.level_up()
 
-
     def exp_to_next_level(self):
-        # 🔥 Different EXP requirements for each level
-        # This creates a more natural level progression like Ash Gray.
-        level_requirements = {
-            1: 20,
-            2: 25,
-            3: 30,
-            4: 35,
-            5: 40,
-            6: 50,
-            7: 60,
-            8: 70,
-            9: 80,
-            10: 95,
-            11: 110,
-            12: 125,
-            13: 145,
-            14: 165,
-            15: 190,
-            16: 215,
-            17: 245,
-            18: 275,
-            19: 310,
-            20: 350,
-            21: 395,
-            22: 445,
-            23: 500,
-            24: 565,
-            25: 635,
-            26: 710,
-            27: 790,
-            28: 875,
-            29: 965,
-            30: 1060,
-        }
-        return level_requirements.get(
-            self.level,
-            int(1060 + ((self.level - 30) * 125))
-        )
+        return 40 + (self.level * 25)
 
     def level_up(self):
         self.level += 1
-
         print(f"🔥 {self.name} leveled up to {self.level}!")
 
-        # Stat growth
         self.max_hp += 5
         self.attack += 2
         self.defense += 2
         self.hp = self.max_hp
 
-        # 🔥 FORCE EVOLUTION CHECK (IMPORTANT)
         self.check_evolution()
 
-    # ----------------------------
-    # EVOLUTION SYSTEM
     # ----------------------------
     def check_evolution(self):
         if not self.evolution:
             return
 
-        evo_level = self.evolution.get("level")
-
-        # 🔥 STRICT CHECK
-        if self.level >= evo_level:
+        if self.level >= self.evolution["level"]:
             print(f"\n✨ {self.name} is evolving...")
 
             old_name = self.name
@@ -109,12 +70,15 @@ class Pokemon:
             self.max_hp = self.evolution["hp"]
             self.attack = self.evolution["attack"]
             self.defense = self.evolution["defense"]
+            self.image = self.evolution.get("image")
 
             self.hp = self.max_hp
 
             print(f"🧬 {old_name} evolved into {self.name}!")
 
-            # 🔥 REMOVE EVOLUTION (prevent repeat)
+            # 🔥 SHOW EVOLUTION IMAGE
+            self.show_image()
+
             self.evolution = None
 
     # ----------------------------
@@ -142,12 +106,10 @@ class Pokemon:
 
     def get_attack_multiplier(self):
         multiplier = 1.0
-
         if self.bond >= 70:
             multiplier *= 1.3
         elif self.bond >= 30:
             multiplier *= 1.1
-
         return multiplier
 
     def take_damage(self, damage):
