@@ -1,16 +1,14 @@
 from engine.json_loader import JSONLoader
 from models.trainer import Trainer
 from engine.battle_engine import BattleEngine
-from systems.save_manager import SaveManager
-from systems.difficulty_manager import DifficultyManager
 from systems.inventory_manager import InventoryManager
+from systems.story_manager import StoryManager
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
-        self.save_manager = SaveManager()
-        self.difficulty = DifficultyManager()
         self.inventory = InventoryManager()
+        self.story = StoryManager()
 
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
@@ -23,7 +21,6 @@ class Game:
     def create_player(self):
         return Trainer({
             "name": "Player",
-            "personality": "calm",
             "team": ["Pikachu"]
         }, self.pokemon_data)
 
@@ -32,23 +29,34 @@ class Game:
 
         player = self.create_player()
 
-        # 🔥 FIRST BATTLE (RIVAL)
+        # 🎬 INTRO
+        self.story.play_scene("intro")
+
+        # 🔥 RIVAL BATTLE
         rival = self.trainers[0]
+
+        self.story.play_scene("rival_before")
+
         battle = BattleEngine(player, rival, self.moves_data, self.inventory)
         battle.start_battle()
 
+        if player.has_pokemon_left():
+            self.story.play_scene("rival_after_win")
+
         # 🔥 GYM BATTLE
-        gym_leader = self.trainers[1]
+        gym = self.trainers[1]
 
-        print(f"\n🏆 Gym Leader {gym_leader.name} challenges you!")
-        gym_leader.apply_gym_boost()
+        print(f"\n🏆 Gym Leader {gym.name} challenges you!")
+        gym.apply_gym_boost()
 
-        battle = BattleEngine(player, gym_leader, self.moves_data, self.inventory)
+        self.story.play_scene("gym_before")
+
+        battle = BattleEngine(player, gym, self.moves_data, self.inventory)
         battle.start_battle()
 
-        # 🎖️ REWARD
         if player.has_pokemon_left():
-            print(f"\n🎖️ You earned the {gym_leader.badge}!")
-            self.badges.append(gym_leader.badge)
+            self.story.play_scene("gym_after_win")
+            print(f"\n🎖️ You earned the {gym.badge}!")
+            self.badges.append(gym.badge)
 
         print(f"\n🏅 Badges: {self.badges}")
