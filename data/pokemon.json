@@ -52,7 +52,8 @@
       "level": 6,
       "hp": 60,
       "attack": 62,
-      "defense": 63
+      "defense": 63,
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
     }
   },
   {
@@ -64,12 +65,14 @@
     "level": 5,
     "role": "defender",
     "moves": ["Water Gun", "Tackle"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
     "evolution": {
       "name": "Wartortle",
       "level": 6,
       "hp": 59,
       "attack": 63,
-      "defense": 80
+      "defense": 80,
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
     }
   },
   {
@@ -80,7 +83,8 @@
     "defense": 160,
     "level": 5,
     "role": "defender",
-    "moves": ["Rock Throw", "Tackle"]
+    "moves": ["Rock Throw", "Tackle"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"
   },
   {
     "name": "Geodude",
@@ -90,7 +94,8 @@
     "defense": 100,
     "level": 5,
     "role": "attacker",
-    "moves": ["Rock Throw", "Tackle"]
+    "moves": ["Rock Throw", "Tackle"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png"
   },
   {
     "name": "Staryu",
@@ -101,6 +106,7 @@
     "level": 5,
     "role": "speed",
     "moves": ["Water Gun", "Swift"]
+    
   },
   {
     "name": "Starmie",
