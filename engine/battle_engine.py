@@ -1,35 +1,28 @@
 import random
 from systems.dialogue_manager import DialogueManager
-from engine.json_loader import JSONLoader
 from systems.type_chart import get_effectiveness
 
 class BattleEngine:
-    def __init__(self, player, opponent, moves_data=None):
+    def __init__(self, player, opponent, moves_data):
         self.player = player
         self.opponent = opponent
-        self.opponent_pokemon.sound.play_attack()
 
-        if moves_data:
-            self.moves_data = {m["name"]: m for m in moves_data}
-        else:
-            # Fallback for backward compatibility
-            self.loader = JSONLoader()
-            self.moves_data = {m["name"]: m for m in self.loader.load("moves.json")}
+        self.moves_data = {m["name"]: m for m in moves_data}
 
         self.dialogue = DialogueManager(speed=0.005)
 
         self.player_pokemon = player.get_active_pokemon()
         self.opponent_pokemon = opponent.get_active_pokemon()
 
-        # 🔥 FIX: store opponent level safely
         self.last_opponent_level = self.opponent_pokemon.level if self.opponent_pokemon else 5
 
     def start_battle(self):
         print(f"\n⚔️ Battle Start: {self.player.name} vs {self.opponent.name}\n")
 
+        # 🔥 SHOW IMAGES
         self.player_pokemon.show_image()
         self.opponent_pokemon.show_image()
-        self.opponent_pokemon.sound.play_attack()
+
         turn = 1
 
         while self.player.has_pokemon_left() and self.opponent.has_pokemon_left():
@@ -57,6 +50,9 @@ class BattleEngine:
 
         move_name = self.player_pokemon.choose_move()
         move = self.moves_data.get(move_name, {"power": 40, "type": "Normal"})
+
+        # 🔊 ATTACK SOUND
+        self.player_pokemon.sound.play_attack()
 
         effectiveness = get_effectiveness(move["type"], self.opponent_pokemon.type)
 
@@ -87,6 +83,9 @@ class BattleEngine:
         move_name = random.choice(self.opponent_pokemon.moves)
         move = self.moves_data.get(move_name, {"power": 40, "type": "Normal"})
 
+        # 🔊 ATTACK SOUND
+        self.opponent_pokemon.sound.play_attack()
+
         effectiveness = get_effectiveness(move["type"], self.player_pokemon.type)
 
         damage = self.calculate_damage(
@@ -110,16 +109,13 @@ class BattleEngine:
 
     # ----------------------------
     def check_faint(self):
-        # Player faint
         if self.player_pokemon and not self.player_pokemon.is_alive():
             print(f"💀 {self.player_pokemon.name} fainted!")
             self.player_pokemon = self.player.switch_next()
 
-        # Opponent faint
         if self.opponent_pokemon and not self.opponent_pokemon.is_alive():
             print(f"💀 {self.opponent_pokemon.name} fainted!")
 
-            # 🔥 SAVE LAST LEVEL BEFORE REMOVING
             self.last_opponent_level = self.opponent_pokemon.level
 
             self.opponent_pokemon = self.opponent.switch_next()
@@ -143,7 +139,6 @@ class BattleEngine:
         if self.player.has_pokemon_left():
             print(f"🏆 {self.player.name} wins!")
 
-            # 🔥 SAFE EXP SYSTEM
             for p in self.player.team:
                 if p.is_alive():
                     p.gain_exp(self.last_opponent_level)
