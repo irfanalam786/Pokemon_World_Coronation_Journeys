@@ -21,6 +21,9 @@ class Game:
 
         self.battle = BattleEngine(self.player, self.opponent, self.moves_data, self.inventory)
 
+    def start(self):
+        self.battle.start_battle()
+
     def attack(self):
         return self.battle.player_turn_ui()
 
