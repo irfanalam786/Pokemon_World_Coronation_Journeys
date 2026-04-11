@@ -3,12 +3,14 @@ from models.trainer import Trainer
 from engine.battle_engine import BattleEngine
 from systems.save_manager import SaveManager
 from systems.difficulty_manager import DifficultyManager
+from systems.inventory_manager import InventoryManager
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
         self.save_manager = SaveManager()
         self.difficulty = DifficultyManager()
+        self.inventory = InventoryManager()
 
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
@@ -42,26 +44,21 @@ class Game:
 
             for p_data in save_data["team"]:
                 for base in self.pokemon_data:
-                    # 🔥 FIX: match BOTH base and evolved names
                     if base["name"] == p_data["name"] or \
                        (base.get("evolution") and base["evolution"]["name"] == p_data["name"]):
 
                         p = Pokemon(base)
 
-                        # Restore stats
                         p.hp = p_data["hp"]
                         p.max_hp = p_data["max_hp"]
                         p.level = p_data["level"]
                         p.bond = p_data["bond"]
 
-                        # 🔥 FIX: if already evolved → update name
                         if base.get("evolution") and base["evolution"]["name"] == p_data["name"]:
                             p.name = p_data["name"]
-                            p.evolution = None  # prevent re-evolution
+                            p.evolution = None
 
-                        # Heal if fainted
                         if p.hp <= 0:
-                            print(f"⚠️ {p.name} was fainted. Restoring HP.")
                             p.hp = p.max_hp
 
                         player.team.append(p)
@@ -76,11 +73,10 @@ class Game:
         player = self.load_or_create_player()
         opponent = self.trainers[0]
 
-        # Apply difficulty
         for p in opponent.team:
             self.difficulty.adjust_pokemon(p)
 
-        battle = BattleEngine(player, opponent, self.moves_data)
+        battle = BattleEngine(player, opponent, self.moves_data, self.inventory)
         battle.start_battle()
 
         self.difficulty.increase_difficulty()
