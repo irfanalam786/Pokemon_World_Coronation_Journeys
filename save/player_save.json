@@ -3,7 +3,7 @@
     "team": [
         {
             "name": "Raichu",
-            "hp": 36,
+            "hp": 12,
             "max_hp": 65,
             "level": 7,
             "bond": 72
