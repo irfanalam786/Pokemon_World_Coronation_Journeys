@@ -8,12 +8,15 @@
     "level": 5,
     "role": "speed",
     "moves": ["Thunderbolt", "Quick Attack"],
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
     "evolution": {
       "name": "Raichu",
       "level": 6,
       "hp": 60,
       "attack": 90,
-      "defense": 55
+      "defense": 55,
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
+    }
     }
   },
   {
