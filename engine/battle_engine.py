@@ -25,10 +25,10 @@ class BattleEngine:
 
     def start_battle(self):
         print(f"\n⚔️ Battle Start: {self.player.name} vs {self.opponent.name}\n")
+        # ADD after battle start print
 
         self.player_pokemon.show_image()
         self.opponent_pokemon.show_image()
-        self.player_pokemon.sound.play_attack()
 
         turn = 1
 
