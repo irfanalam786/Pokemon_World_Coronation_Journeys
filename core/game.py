@@ -2,61 +2,35 @@ from engine.json_loader import JSONLoader
 from models.trainer import Trainer
 from engine.battle_engine import BattleEngine
 from systems.inventory_manager import InventoryManager
-from systems.story_manager import StoryManager
 
 class Game:
     def __init__(self):
         self.loader = JSONLoader()
         self.inventory = InventoryManager()
-        self.story = StoryManager()
 
         self.pokemon_data = self.loader.load("pokemon.json")
         self.trainers_data = self.loader.load("trainers.json")
         self.moves_data = self.loader.load("moves.json")
 
-        self.trainers = [Trainer(t, self.pokemon_data) for t in self.trainers_data]
-
-        self.badges = []
-
-    def create_player(self):
-        return Trainer({
+        self.player = Trainer({
             "name": "Player",
             "team": ["Pikachu"]
         }, self.pokemon_data)
 
-    def start(self):
-        print("🎮 Pokémon Anime RPG Started\n")
+        self.opponent = Trainer(self.trainers_data[0], self.pokemon_data)
 
-        player = self.create_player()
+        self.battle = BattleEngine(self.player, self.opponent, self.moves_data, self.inventory)
 
-        # 🎬 INTRO
-        self.story.play_scene("intro")
+    def attack(self):
+        return self.battle.player_turn_ui()
 
-        # 🔥 RIVAL BATTLE
-        rival = self.trainers[0]
+    def opponent_turn(self):
+        return self.battle.opponent_turn_ui()
 
-        self.story.play_scene("rival_before")
-
-        battle = BattleEngine(player, rival, self.moves_data, self.inventory)
-        battle.start_battle()
-
-        if player.has_pokemon_left():
-            self.story.play_scene("rival_after_win")
-
-        # 🔥 GYM BATTLE
-        gym = self.trainers[1]
-
-        print(f"\n🏆 Gym Leader {gym.name} challenges you!")
-        gym.apply_gym_boost()
-
-        self.story.play_scene("gym_before")
-
-        battle = BattleEngine(player, gym, self.moves_data, self.inventory)
-        battle.start_battle()
-
-        if player.has_pokemon_left():
-            self.story.play_scene("gym_after_win")
-            print(f"\n🎖️ You earned the {gym.badge}!")
-            self.badges.append(gym.badge)
-
-        print(f"\n🏅 Badges: {self.badges}")
+    def get_state(self):
+        return {
+            "player": str(self.battle.player_pokemon),
+            "opponent": str(self.battle.opponent_pokemon),
+            "player_img": self.battle.player_pokemon.image,
+            "opponent_img": self.battle.opponent_pokemon.image
+        }
