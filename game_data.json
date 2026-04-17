@@ -1,0 +1,22 @@
+{
+  "title": "Pokémon Masters Journey",
+
+  "controls": [
+    "Use Arrow Keys or D-Pad to move",
+    "Press A to interact or confirm",
+    "Press B to cancel or go back"
+  ],
+
+  "buttons": {
+    "D-Pad": "Move character in all directions",
+    "A": "Select / Confirm / Talk",
+    "B": "Cancel / Back / Run"
+  },
+
+  "extra_buttons": {
+    "START": "Open main menu / pause game",
+    "SELECT": "Open quick menu / use registered item",
+    "L": "Navigate left / switch tabs",
+    "R": "Navigate right / switch tabs"
+  }
+}
